@@ -12,6 +12,7 @@ import Footer from "./Footer";
 import Cart from "./Cart";
 import AdminProductForm from "./AdminProductForm";
 import AdminDashboard from "./AdminDashboard";
+import SearchBar from "./SearchBar";
 
 
 const App = () => {
@@ -49,6 +50,8 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/admin/product-form" element={< AdminProductForm />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/categories" element={<SearchBar/>} />
+        
         <Route path="/" element={<Products />} />
       </Routes>
       <Footer APIHealth={APIHealth} />

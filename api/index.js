@@ -63,6 +63,13 @@ apiRouter.use("/product-orders", productOrdersRouter)
 const ordersRouter = require("./orders")
 apiRouter.use("/orders", ordersRouter)
 
+
+const categoriesRouter = require("./categories")
+apiRouter.use("/categories", categoriesRouter)
+
+
+
+
 // place your routers here
 apiRouter.get("/", (req, res, next) => {
   res.send({
