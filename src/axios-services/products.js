@@ -60,3 +60,12 @@ export async function updateProduct(
         console.error(err);
     }
 }
+
+export async function getAllProductsbyCat(categoryId) {
+    try {
+        const { data: category } = await axios.get(`/api/products/categories/${categoryId}`);
+        return category;
+    } catch (err) {
+        console.error(err);
+    }
+}

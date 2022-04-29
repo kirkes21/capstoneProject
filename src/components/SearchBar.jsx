@@ -1,62 +1,57 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react";
+import { getAllProductsbyCat } from "../axios-services/products";
+import {
+  getAllCategories
+} from "../axios-services/categories";
 
-import { getAllCategories } from '../axios-services/categories';
+const SearchBar = ({ products }) => {
+  const [categories, setCategories] = useState([]);
+  const [productCategory, setProductCategory] = useState("any");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredPosts, setFilteredPosts] = useState([]);
 
-const SearchBar = () => {
-    const[categories, setCategories] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("");
-    const [filteredPosts, setFilteredPosts] = useState([]);
+  useEffect(() => {
+    const getProductCats = async (categoryId) => {
+      const productCategories = await getAllProductsbyCat(categoryId);
+      console.log(productCategories, "all categories");
+      setProductCategory(productCategories);
+      console.log(productCategory, "after the set");
+    };
 
+    getProductCats();
+  }, []);
 
-    useEffect(() => {
-        const getCategories = async () => {
-          const allCategories = await getAllCategories();
-          console.log(allCategories, "all categories")
-          setCategories(allCategories);
-          console.log(categories, "after the set")
-        };
-        console.log(getCategories(), "categories")
-        getCategories();
-      }, []);
+  useEffect(() => {
+    const getCategories = async () => {
+      const allCategories = await getAllCategories();
 
-    return (
-        <>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            // const filtered = categories.filter((category) =>
-            getAllCategories();
-            // );
-            // setFilteredPosts(filteredPosts);
-            setSearchTerm("");
-          }}
-        >
-            <h2> Select Category</h2>
-               <select
-          onChange={(e) => {
-            e.preventDefault();
-            setCategories(e.target.value);
-          }}
-        >
-          {categories.map((category) => {
-              console.log(category, "inside map")
-            return (
-              <option key={category.id} value={category.id}>
-                {category.categoryName}
-              </option>
-            );
-          })}
-        </select> 
-          <input
-            type="text"
-            placeholder="Search"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          ></input>
-          <button type="submit">Search</button>
-        </form>
-        </>
-    );
+      setCategories(allCategories);
+    };
+
+    getCategories();
+  }, []);
+
+  return (
+    <>
+      <h2> Select Category</h2>
+      <select
+        onChange={(e) => {
+          e.preventDefault();
+
+          setProductCategory(e.target.value);
+        }}
+      >
+        {categories.map((category) => {
+        //   console.log(category, "inside map");
+          return (
+            <option key={category.id} value={category.id}>
+              {category.categoryName}
+            </option>
+          );
+        })}
+      </select>
+    </>
+  );
 };
 
 export default SearchBar;

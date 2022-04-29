@@ -54,6 +54,9 @@ productsRouter.get("/category/:categoryId", async (req, res, next) => {
       where: {
         categoryId: +req.params.categoryId,
       },
+      include: {
+       products:true
+      }
     });
     res.send(getProductsByCat);
   } catch (error) {

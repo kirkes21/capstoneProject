@@ -4,7 +4,7 @@ import { getProducts } from "../axios-services/products";
 import useAuth from "../hooks/useAuth";
 import SingleProduct from "./SingleProduct";
 import styles from "../style/Products.module.css";
-
+import SearchBar from "./SearchBar";
 const Products = () => {
   const [products, setProducts] = useState([]);
   const { user } = useAuth();
@@ -25,6 +25,7 @@ const Products = () => {
           <h3 className="admin-product-form">Add a New Product</h3>
         </Link>
       ) : null}
+        <SearchBar products ={products} />
       <div className={styles.postcard}>
         {products
           ? products.map((product, i) => {
