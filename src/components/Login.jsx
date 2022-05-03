@@ -12,6 +12,7 @@ function Login() {
   // allows us to set the focus on if we get an error
   const errRef = useRef();
   const { setToken } = useAuth();
+
   // States for login
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

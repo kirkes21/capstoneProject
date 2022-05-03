@@ -46,7 +46,6 @@ ordersRouter.post("/", async (req, res, next) => {
         }
       }
     });
-    console.log('Created order:', createOrder);
 
     res.send(createOrder);
   } catch (error) {

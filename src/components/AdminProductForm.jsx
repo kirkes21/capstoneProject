@@ -26,10 +26,6 @@ const AdminProductForm = () => {
                 formState.condition,
                 formState.imageURL
               );
-              console.log(
-                "%cNew Product Created",
-                `background:linear-gradient(#E66465, #9198E5);padding: .3rem;color: white;border-radius: .5em`
-              );
             }}
           >
             <div className={styles.user_box}>

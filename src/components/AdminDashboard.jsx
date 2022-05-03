@@ -15,11 +15,6 @@ function AdminDashboard() {
     }
     async function fetchOrders() {
       const orders = await getAllOrders();
-      console.log(
-        "%cAdminDashboard.jsx line:17 orders",
-        "color: white; background-color: #007acc;",
-        orders
-      );
       setAllOrders(orders);
     }
     fetchUsers();

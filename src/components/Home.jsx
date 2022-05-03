@@ -70,13 +70,6 @@ const Home = ({ products }) => {
                         <button
                           className={styles.deleteProduct}
                           onClick={async () => {
-                            console.log(
-                              "%cDeleted Product",
-                              `background:linear-gradient(#E66465, #9198E5);
-                                  padding: .3rem;
-                                  color: white;
-                                  border-radius: .5em`
-                            );
                             await deleteProduct(product.id);
                             const filteredProducts = products.filter(
                               (product) => {

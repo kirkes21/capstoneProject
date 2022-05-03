@@ -13,17 +13,14 @@ apiRouter.get("/health", (req, res, next) => {
 apiRouter.use(async (req, res, next) => {
   const prefix = "Bearer ";
   const auth = req.header("Authorization");
-  //console.log(" prefix auth:", prefix, auth);
 
   if (!auth) {
     // nothing to see here
     next();
   } else if (auth.startsWith(prefix)) {
     const token = auth.slice(prefix.length);
-    //console.log("*************token:", token);
     try {
       const { id } = jwt.verify(token, JWT_SECRET);
-      //console.log("response:", response);
       if (id) {
         req.user = await prisma.users.findUnique({
           where: {
@@ -43,13 +40,13 @@ apiRouter.use(async (req, res, next) => {
   }
 });
 
-apiRouter.use((req, res, next) => {
-  if (req.user) {
-    console.log("User is set:", req.user);
-  }
+// apiRouter.use((req, res, next) => {
+//   if (req.user) {
+//     console.log("User is set:", req.user);
+//   }
 
-  next();
-});
+//   next();
+// });
 
 const usersRouter = require("./users");
 apiRouter.use("/users", usersRouter);
@@ -63,17 +60,10 @@ apiRouter.use("/product-orders", productOrdersRouter)
 const ordersRouter = require("./orders")
 apiRouter.use("/orders", ordersRouter)
 
-// place your routers here
 apiRouter.get("/", (req, res, next) => {
   res.send({
     message: "API is under construction!!!",
   });
 });
-// apiRouter.use((error, req, res, next) => {
-//   res.send({
-//     name: error.name,
-//     message: error.message,
-//   });
-// });
 
 module.exports = apiRouter;

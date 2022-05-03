@@ -69,10 +69,8 @@ usersRouter.post("/register", async (req, res, next) => {
 });
 
 usersRouter.post("/login", async (req, res, next) => {
-  // console.log(req, "request");
   const { username, password } = req.body;
 
-  // request must have both
   if (!username || !password) {
     next({
       name: "MissingCredentialsError",
@@ -88,7 +86,6 @@ usersRouter.post("/login", async (req, res, next) => {
     });
 
     if (user && user.password === password) {
-      // create token & return to user
       const token = jwt.sign(
         { id: user.id, username: username },
         process.env.JWT_SECRET,
@@ -102,7 +99,6 @@ usersRouter.post("/login", async (req, res, next) => {
       });
     }
   } catch (error) {
-    // console.log(error);
     next(error);
   }
 });
@@ -132,14 +128,13 @@ usersRouter.get("/cart/:userId", async (req, res, next) => {
 });
 
 usersRouter.get("/:username", async (req, res, next) => {
-  // const username = req.params
+
   try {
     const getUsername = await prisma.users.findUnique({
       where: {
         username: req.params.username,
       },
     });
-    //   console.log(getUsername)
     res.send(getUsername);
   } catch (error) {
     next(error);
