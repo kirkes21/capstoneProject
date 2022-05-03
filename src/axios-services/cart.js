@@ -14,9 +14,7 @@ export async function getCartByUser(userId) {
 
 export async function createCart(userId, isActive) {
   try {
-    const {
-      data
-    } = await axios.post(`/api/orders/`, {
+    const { data } = await axios.post(`/api/orders/`, {
       userId,
       isActive,
     });
