@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import CartContext from "../CartContext";
 import useAuth from "../hooks/useAuth";
-import { getCartByUser, createCart } from "../axios-services/cart";
+import { getCartByUser } from "../axios-services/cart";
 
 const CartProvider = ({ children }) => {
-  const { token, user } = useAuth();
+  const { user } = useAuth();
   const [cart, setCart] = useState({ product_orders: [] });
 
   useEffect(() => {
