@@ -8,7 +8,6 @@ function AdminEditForm() {
   const [productToEdit, setProductToEdit] = useState({});
 
   const { user } = useAuth();
-
   const { productId } = useParams();
 
   const navigate = useNavigate();
@@ -35,10 +34,6 @@ function AdminEditForm() {
                   productToEdit.description,
                   productToEdit.condition,
                   productToEdit.imageURL
-                );
-                console.log(
-                  "%cProduct Updated",
-                  `background:linear-gradient(#E66465, #9198E5);padding: .3rem;color: white;border-radius: .5em`
                 );
                 navigate("/products", { replace: true });
               }}
@@ -96,7 +91,6 @@ function AdminEditForm() {
                     }}
                   />
                 </div>
-                {/* <br></br> */}
                 <div className={styles.condition_box}>
                   <p htmlFor="used">Used</p>
                   <input

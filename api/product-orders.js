@@ -31,14 +31,6 @@ productOrdersRouter.post("/", async (req, res, next) => {
             }
         });
 
-        // console.log("Through Table", createProductOrder)
-
-        // const product = await prisma.products.findUnique({
-        //     where: {
-        //         id: createProductOrder.productId
-        //     }
-        // })
-        console.log("Return from prisma", createdProductOrder)
         res.send(createdProductOrder);
     } catch (error) {
         next(error);

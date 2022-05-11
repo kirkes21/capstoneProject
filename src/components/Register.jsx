@@ -53,16 +53,12 @@ function Register() {
   // hook where we validate the username
   useEffect(() => {
     const result = USER_REGEX.test(username);
-    console.log(result);
-    console.log(username);
     setValidUserName(result);
   }, [username]);
 
   // hook where we validate the password
   useEffect(() => {
     const result = PWD_REGEX.test(password);
-    console.log(result);
-    console.log(password);
     setValidPwd(result);
     const match = password === matchPwd;
     setValidMatch(match);
@@ -137,7 +133,6 @@ function Register() {
                   setErrMsg("Registration Failed");
                 }
                 errRef.current.focus();
-                //throw error;
               }
             }}
           >
@@ -226,11 +221,6 @@ function Register() {
                 Letters, numbers, underscores, hyphens allowed.
                 <br />
                 Allowed special characters: !,@,#,$,%
-                {/* <span aria-label="exclamation mark">!</span>{" "}
-                <span aria-label="at symbol">@</span>{" "}
-                <span aria-label="hashtag">#</span>{" "}
-                <span aria-label="dollar sign">$</span>{" "}
-                <span aria-label="percent">%</span> */}
               </p>
             </div>
             <div className={styles.user_box}>

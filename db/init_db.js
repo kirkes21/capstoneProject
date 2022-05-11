@@ -9,7 +9,7 @@ const {
 } = require("./seedData");
 async function dropTables() {
   console.log("Dropping All Tables...");
-  // drop all tables, in the correct order
+
   try {
     await prisma.$executeRaw`
     DROP TABLE IF EXISTS product_categories;`;

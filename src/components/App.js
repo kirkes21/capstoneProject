@@ -45,7 +45,7 @@ const App = () => {
         <Route
           path="/products/:singleProductId"
           element={
-            <SingleProduct products={products} setproducts={setProducts} />
+            <SingleProduct products={products} setProducts={setProducts} />
           }
         />
         <Route
@@ -57,7 +57,7 @@ const App = () => {
         <Route path="/admin/product-form" element={<AdminProductForm />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/edit-form/:productId" element={<AdminEditForm />} />
-        <Route path="/" element={<Home products ={products} />} />
+        <Route path="/" element={<Home products={products} />} />
       </Routes>
 
       <Footer APIHealth={APIHealth} />

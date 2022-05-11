@@ -23,9 +23,12 @@ const SingleProduct = ({ product, products, setProducts }) => {
 
   if (productToRender) {
     return (
-      <div className={styles.product} style= {{
-        marginBottom: '10rem'
-      }}>
+      <div
+        className={styles.product}
+        style={{
+          marginBottom: "10rem",
+        }}
+      >
         <Link
           to={`/products/${productToRender.id}`}
           style={{
@@ -61,13 +64,6 @@ const SingleProduct = ({ product, products, setProducts }) => {
             <button
               className={styles.deleteProduct}
               onClick={async () => {
-                console.log(
-                  "%cDeleted Product",
-                  `background:linear-gradient(#E66465, #9198E5);
-                padding: .3rem;
-                color: white;
-                border-radius: .5em`
-                );
                 await deleteProduct(productToRender.id);
                 const filteredProducts = products.filter((product) => {
                   if (product.id !== productToRender.id) return true;

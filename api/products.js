@@ -1,7 +1,6 @@
 const express = require("express");
 const productsRouter = express.Router();
 const prisma = require("../db/prisma");
-const requireUser = require("./utils");
 
 productsRouter.use((req, res, next) => {
   console.log("Request made to /products");
